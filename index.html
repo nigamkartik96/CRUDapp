@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Note</title>
+	<script src="js/lib/angular.min.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+		<script src="js/custom/app.js"></script>
+		<script src="js/custom/directive.js"></script>
+	<script src="js/custom/controller.js"></script>
+	<script src="js/custom/model.js"></script>
+	
+</head>
+<body ng-app="crudapp" ng-controller="myctrl">
+	<fliedset>
+		<legend>NOTE APP</legend>
+		<table>
+			<tr>
+				<td><label for="">Note ID:</label></td>
+				<td><label for="">{{id}}</label></td>
+			</tr>
+			<tr>
+				<td><label for="">Description</label></td>
+				<td><textarea ng-model="desc" id="" cols="30" rows="10"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="">Author</label></td>
+				<td><input type="text" ng-model="author"></td>
+			</tr>
+		</table>
+		
+		<table>
+			<tr>
+				<td><button ng-click="add()">Add</button></td>
+				<td><button ng-click="delete1()">Delete</button></td>
+				<td><button>Search</button></td>
+				<td><button>Sort</button></td>
+				<td><button>Load</button></td>
+				<td><button>Save</button></td>
+				<td><button>Clear</button></td>
+				<td><button>Update</button></td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td><h6>Total ::: {{id-1}}</h6></td>
+				<td><h6>Selected ::: {{numberSelected}}</h6></td>
+				<td><h6>Not Selected ::: {{noteList.length-numberSelected}}</h6></td>
+			</tr>
+		</table>
+	</fliedset>
+	
+	<fieldset>
+		<legend>Note Show</legend>
+			<table>
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Description</td>
+						<td>Author</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-click="note.toggle();countSelected()" ng-repeat="note in noteList" ng-class="{marking:note.mark}" ng-mousedown="handleClick($event)" oncontextmenu="return false" >
+						<td>{{note.id}}</td>
+						<td>{{note.desc}}</td>
+						<td>{{note.author}}</td>
+					</tr>
+				</tbody>
+			</table>
+	</fieldset>
+</body>
+</html>
